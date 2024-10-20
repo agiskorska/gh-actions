@@ -17,7 +17,9 @@ jobs:
 
       - name: Log in to Google Cloud Artifact Registry
         run: |
-          echo "${{ secrets.GOOGLE_APPLICATION_CREDS }}" | docker login -u _json_key --password-stdin https://europe-west2-docker.pkg.dev
+         gcloud auth activate-service-account gh-actions-testing@serverless-438308.iam.gserviceaccount.com --key-file=${{ secrets.GOOGLE_APPLICATION_CREDS }}
+
+         gcloud auth configure-docker europe-west2-docker.pkg.dev
 
       - name: Set up Google Cloud SDK
         uses: google-github-actions/setup-gcloud@v1
