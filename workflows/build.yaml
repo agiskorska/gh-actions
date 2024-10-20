@@ -23,5 +23,5 @@ jobs:
           GOOGLE_PROJECT: ${{ secrets.GOOLGE_PROJECT }}
         run: |
           gcould auth configure-docker europe-west2-docker.pkg.dev 
-          docker build -t europe-west2-docker.pkg.dev/serverless-438308/ar-test/nginx:latest .
-          docker push europe-west2-docker.pkg.dev/serverless-438308/ar-test/nginx:latest
+          docker build -t europe-west2-docker.pkg.dev/ ${{ secrets.GOOLGE_PROJECT }}/ar-test/nginx:latest .
+          docker push europe-west2-docker.pkg.dev/ ${{ secrets.GOOLGE_PROJECT }}/ar-test/nginx:latest
