@@ -27,12 +27,12 @@ jobs:
           project_id: ${{ secrets.GOOLGE_PROJECT }}
 
       - name: Configure Docker for Google Artifact Registry
-        run: gcloud auth configure-docker ${{ secrets.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev
+        run: gcloud auth configure-docker europe-west2-docker.pkg.dev
 
       - name: Build the Docker image
         run: |
-          docker build -t ${{ secrets.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repository/my-app:${{ github.sha }} .
+          docker build -t europe-west2-docker.pkg.dev/${{ secrets.GOOLGE_PROJECT }}/ar-test/my-app:${{ github.sha }} .
 
       - name: Push the Docker image to Google Artifact Registry
         run: |
-          docker push ${{ secrets.GCP_ARTIFACT_REGISTRY_LOCATION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/my-repository/my-app:${{ github.sha }}
+          docker push europe-west2-docker.pkg.dev/${{ secrets.GOOLGE_PROJECT }}/ar-test/my-app:${{ github.sha }}
