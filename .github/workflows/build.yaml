@@ -12,6 +12,11 @@ jobs:
       - name: code checkout
         uses: actions/checkout@v2
       
+      - name: Auth to GCP CLI
+        uses: 'google-github-actions/auth@v2'
+        with:
+          service_account:  ${{ secrets.GOOGLE_APPLICATION_CREDS }}
+      
       - name: install GCP CLI
         uses: 'google-github-actions/setup-gcloud@v2'
         with: 
